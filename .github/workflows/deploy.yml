@@ -35,7 +35,7 @@ jobs:
         uses: actions/configure-pages@v4
         with:
           enablement: true
-<<<<<<< HEAD
+          static_site_generator: none
       - name: 准备部署文件
         run: |
           # 创建临时目录存放要部署的文件
@@ -50,9 +50,6 @@ jobs:
           cp -r js deploy/
           # 显示部署目录内容（用于调试）
           ls -la deploy/
-=======
-          static_site_generator: none  # 新增这一行
->>>>>>> e3c39dca7c704f318fb39dde40d56ac460ceb8c3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
