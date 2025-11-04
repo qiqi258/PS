@@ -35,11 +35,25 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: 准备部署文件
+        run: |
+          # 创建临时目录存放要部署的文件
+          mkdir deploy
+          # 复制网站必要文件到部署目录
+          cp index.html deploy/
+          cp README.md deploy/
+          cp CNAME deploy/
+          cp sitemap.xml deploy/
+          cp favicon.ico deploy/
+          cp -r css deploy/
+          cp -r js deploy/
+          # 显示部署目录内容（用于调试）
+          ls -la deploy/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # 只上传准备好的网站文件
+          path: 'deploy'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
