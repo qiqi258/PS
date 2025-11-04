@@ -35,6 +35,7 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
+          static_site_generator: none  # 新增这一行
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
